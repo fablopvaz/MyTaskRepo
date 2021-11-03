@@ -17,7 +17,7 @@ public class Task {
 	private String id;
 	
 	@Column(name="status")
-	private String status;
+	private TaskStatus status;
 	
 	@Column(name="content")
 	private String content;
@@ -28,10 +28,10 @@ public class Task {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public String getStatus() {
+	public TaskStatus getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(TaskStatus status) {
 		this.status = status;
 	}
 	public String getContent() {

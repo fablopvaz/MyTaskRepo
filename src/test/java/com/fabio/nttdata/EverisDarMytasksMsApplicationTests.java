@@ -18,14 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fabio.nttdata.controller.TaskController;
 import com.fabio.nttdata.model.Task;
-import com.fabio.nttdata.repository.TaskRepository;
+import com.fabio.nttdata.model.TaskStatus;
 import com.fabio.nttdata.service.TaskService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -34,16 +32,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 class EverisDarMytasksMsApplicationTests {
 
 	@Autowired
-	TaskController taskController;
-	
-	@Autowired
-	TaskRepository taskRepository;
+	private TaskController taskController;
 	
 	@MockBean
-	TaskService taskService;
+	private TaskService taskService;
 	
 	@Autowired
-	MockMvc mockMvc;
+	private MockMvc mockMvc;
 	
 	@Test
 	void contextLoads() {
@@ -56,8 +51,8 @@ class EverisDarMytasksMsApplicationTests {
 		
 		when(taskService.addTask(task)).thenReturn(task);
 		
-		ResponseEntity<String> response = taskController.createTask(task);
-		assertEquals(response.getBody(), "Task created successfully");
+		Task response = taskController.createTask(task);
+		assertEquals(task.getId(),response.getId());
 	}
 	@Test
 	public void addTaskTest2() throws Exception {
@@ -102,22 +97,22 @@ class EverisDarMytasksMsApplicationTests {
 	@Test
 	public void updateTaskStatusTest() {
 		
-		Task modified_task = buildTask("1");
-		Task modified_task2 = buildTask("2"); 
+		Task task = buildTask("1");
+		Task modified_task = buildTask("2"); 
 		
 		/* Task not modified correctly*/
-		when(taskService.modifyTask(modified_task)).thenReturn(modified_task2);
+		when(taskService.modifyTask(task)).thenReturn(modified_task);
 		
-		ResponseEntity<Task> response = taskController.updateTaskStatus(modified_task);
-		assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
+		Task response = taskController.updateTaskStatus(task);
 		
+		assertEquals(response, modified_task);
 		
 	}
 	
 	public Task buildTask(String id) {
 		Task task = new Task();
 		task.setId(id);
-		task.setStatus("Test");
+		task.setStatus(TaskStatus.Finished);
 		task.setContent("Tarea de prueba");
 		return task;
 	}
