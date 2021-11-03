@@ -49,5 +49,5 @@ jobs:
         with:
           app-name: 'EverisDarMytasks'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BE184C6550334B0F9B15B50B89DD0942 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_819C0ED35C71468A9E3C9582D3A0D234 }}
           package: '*.jar'
