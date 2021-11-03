@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fabio.nttdata.controller.Task;
+import com.fabio.nttdata.model.Task;
 import com.fabio.nttdata.repository.TaskRepository;
 
 @Service

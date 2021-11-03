@@ -1,4 +1,4 @@
-package com.fabio.nttdata.controller;
+package com.fabio.nttdata.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fabio.nttdata.model.Task;
 import com.fabio.nttdata.repository.TaskRepository;
 import com.fabio.nttdata.service.TaskService;
 

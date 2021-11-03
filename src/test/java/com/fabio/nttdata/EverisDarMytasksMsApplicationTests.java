@@ -23,8 +23,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.fabio.nttdata.controller.Task;
 import com.fabio.nttdata.controller.TaskController;
+import com.fabio.nttdata.model.Task;
 import com.fabio.nttdata.repository.TaskRepository;
 import com.fabio.nttdata.service.TaskService;
 import com.fasterxml.jackson.databind.ObjectMapper;
