@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fabio.nttdata.model.Task;
 import com.fabio.nttdata.service.TaskService;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
+@CrossOrigin(origins= {"http://localhost:9001"})
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
@@ -41,6 +45,7 @@ public class TaskController {
 		taskService.removeTask(task.getId());
 	}
 	
+	@Hidden
 	@PutMapping
 	public Task updateTaskStatus(@RequestBody Task modified_task) {		
 		return taskService.modifyTask(modified_task);
