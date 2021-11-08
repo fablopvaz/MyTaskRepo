@@ -83,13 +83,10 @@ class EverisDarMytasksMsApplicationTests {
 	}
 	@Test
 	public void deleteTaskTest() throws Exception {
-		Task task = buildTask("1");
-		ObjectMapper map = new ObjectMapper();
-		String jsonString = map.writeValueAsString(task);
+		String task_id = "1";
 		
-		doNothing().when(taskService).removeTask(task.getId());
-		mockMvc.perform(delete("/tasks").contentType(MediaType.APPLICATION_JSON).content(jsonString))
-		.andExpect(status().isOk());
+		doNothing().when(taskService).removeTask(task_id);
+		mockMvc.perform(delete("/tasks/" + task_id)).andExpect(status().isOk());
 		
 	}
 	
