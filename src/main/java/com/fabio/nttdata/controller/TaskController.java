@@ -20,6 +20,7 @@ import com.fabio.nttdata.service.TaskService;
 
 import io.swagger.v3.oas.annotations.Hidden;
 
+
 @CrossOrigin(origins= "*")
 @RestController
 @RequestMapping("/tasks")
